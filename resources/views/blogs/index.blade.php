@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="grid gap-8 grid-cols-3 mx-auto py-10">
+    <div class="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mx-auto py-10">
         @foreach ($blogs as $blog)
             <a href="/blogs/{{ $blog->id }}"
                 class="card w-96 bg-base-100 shadow-xl ease-out hover:-translate-y-1 transition-all hover:cursor-pointer">
@@ -8,7 +8,8 @@
                     <h2 class="card-title">
                         {{ $blog['title'] }}
                     </h2>
-                    <p>{{ strlen($blog['content']) > 50 ? substr($blog['content'], 0, 50) . '...' : $blog['content'] }}</p>
+                    <p>{{ strlen($blog['content']) > 50 ? substr($blog['content'], 0, 50) . '...' : $blog['content'] }}
+                    </p>
                     <div class="card-actions justify-end">
                         @foreach ($blog['tags'] as $tag)
                             <div class="badge badge-outline">{{ $tag }}</div>
