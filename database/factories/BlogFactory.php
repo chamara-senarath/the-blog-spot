@@ -17,9 +17,9 @@ class BlogFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence(),
-            'content' => $this->faker->sentence(),
-            'tags' => 'laravel, api, backend',
+            'title' => $this->faker->sentence($nbWords = 5, $variableNbWords = true),
+            'content' => $this->faker->paragraph($nbWords = 800,$nbSentences = 10, $variableNbSentences = true),
+            'tags' => ['laravel','vue','node'],
         ];
     }
 }

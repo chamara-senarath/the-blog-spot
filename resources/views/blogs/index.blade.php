@@ -1,18 +1,21 @@
 <x-layout>
-<div class="flex px-10">
-    <div class="card w-96 bg-base-100 shadow-xl">
-        <figure><img src="{{asset('images/no-blog-image.png')}}" alt="Shoes" /></figure>
-        <div class="card-body">
-          <h2 class="card-title">
-            Shoes!
-            <div class="badge badge-secondary">NEW</div>
-          </h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div class="card-actions justify-end">
-            <div class="badge badge-outline">Fashion</div> 
-            <div class="badge badge-outline">Products</div>
-          </div>
-        </div>
-      </div>
-</div>
+    <div class="grid gap-8 grid-cols-3 mx-auto py-10">
+        @foreach ($blogs as $blog)
+            <a href="/blogs/{{ $blog->id }}"
+                class="card w-96 bg-base-100 shadow-xl ease-out hover:-translate-y-1 transition-all hover:cursor-pointer">
+                <figure><img src="{{ asset('images/no-blog-image.png') }}" alt="{{ $blog['title'] }}" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">
+                        {{ $blog['title'] }}
+                    </h2>
+                    <p>{{ strlen($blog['content']) > 50 ? substr($blog['content'], 0, 50) . '...' : $blog['content'] }}</p>
+                    <div class="card-actions justify-end">
+                        @foreach ($blog['tags'] as $tag)
+                            <div class="badge badge-outline">{{ $tag }}</div>
+                        @endforeach
+                    </div>
+                </div>
+            </a>
+        @endforeach
+    </div>
 </x-layout>
