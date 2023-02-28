@@ -16,9 +16,11 @@
 
         <div class="navbar bg-base-100">
             <div class="flex-1">
-                <a class="normal-case text-xl" href="/">The Blog Spot</a>
+                <a class="normal-case text-xl" href="/"><img src="{{ asset('/images/logo.png') }}"
+                        width="80px"></a>
             </div>
             <div class="flex-none">
+                <a href="/login" class="btn btn-ghost gap-2  mr-2"> Login </a>
                 <button class="btn btn-ghost gap-2  mr-2">
                     Write a blog
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

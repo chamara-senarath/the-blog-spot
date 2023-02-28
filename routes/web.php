@@ -30,5 +30,7 @@ Route::get('/register', [UserController::class, 'create']);
 // Create new user
 Route::post('/users', [UserController::class, 'store']);
 
+// Create log in user
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 
