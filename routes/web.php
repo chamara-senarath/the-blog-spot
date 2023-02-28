@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,20 @@ use App\Http\Controllers\BlogController;
 |
 */
 
+// All blogs
 Route::get('/', [BlogController::class, 'index']);
 
+// Single blog
 Route::get('/blogs/{blog}', [BlogController::class, 'show']);
+
+// Show login form
+Route::get('/login', [UserController::class, 'login']);
+
+// Show register form
+Route::get('/register', [UserController::class, 'create']);
+
+// Create new user
+Route::post('/users', [UserController::class, 'store']);
+
+
 

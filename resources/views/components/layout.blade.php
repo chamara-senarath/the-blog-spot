@@ -16,7 +16,7 @@
 
         <div class="navbar bg-base-100">
             <div class="flex-1">
-                <a class="normal-case text-xl">The Blog Spot</a>
+                <a class="normal-case text-xl" href="/">The Blog Spot</a>
             </div>
             <div class="flex-none">
                 <button class="btn btn-ghost gap-2  mr-2">
