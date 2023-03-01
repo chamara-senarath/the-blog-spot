@@ -15,17 +15,24 @@ use App\Http\Controllers\UserController;
 |
 */
 
-// All blogs
+// All blogs view
 Route::get('/', [BlogController::class, 'index']);
 
-// Single blog
+// Create blog view
+Route::get('/blogs/create', [BlogController::class, 'create'])->middleware('auth'); 
+
+// Single blog view
 Route::get('/blogs/{blog}', [BlogController::class, 'show']);
 
-// Show login form
-Route::get('/login', [UserController::class, 'login']);
+// Create new blog
+Route::post('/blogs', [BlogController::class, 'store'])->middleware('auth'); 
 
-// Show register form
-Route::get('/register', [UserController::class, 'create']);
+
+// Show login form view
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
+
+// Show register form view
+Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 
 // Create new user
 Route::post('/users', [UserController::class, 'store']);

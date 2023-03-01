@@ -10,6 +10,8 @@ class Blog extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title','user_id','content','tags','image'];
+
     protected function tags(): Attribute
     {
         return Attribute::make(

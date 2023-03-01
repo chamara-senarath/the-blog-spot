@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,8 +19,14 @@ class BlogFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence($nbWords = 5, $variableNbWords = true),
-            'content' => $this->faker->paragraph($nbWords = 800,$nbSentences = 10, $variableNbSentences = true),
-            'tags' => ['laravel','vue','node'],
+            'content' => $this->faker->paragraph($nbWords = 800, $nbSentences = 10, $variableNbSentences = true),
+            'tags' => ['laravel', 'vue', 'node'],
         ];
+    }
+
+    // Relationship to user
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
