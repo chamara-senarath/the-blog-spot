@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="flex justify-center">
+    <div class="my-auto mx-auto">
         <div class="card card-normal w-96 bg-base-100 outline">
             <div class="card-body">
                 <div class="card-title text-justify">Login</div>

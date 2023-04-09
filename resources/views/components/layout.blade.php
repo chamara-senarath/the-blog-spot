@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="flex flex-col min-h-screen justify-between">
+    <div class="flex flex-col min-h-screen">
         <div class="navbar bg-base-100">
             <div class="flex-1">
                 <a class="normal-case text-xl" href="/"><img src="{{ asset('/images/logo.png') }}"

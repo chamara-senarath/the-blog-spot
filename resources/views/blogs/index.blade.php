@@ -11,7 +11,8 @@
                     <h2 class="card-title">
                         {{ $blog['title'] }}
                     </h2>
-                    <p>{{ strlen($blog['content']) > 50 ? substr($blog['content'], 0, 50) . '...' : $blog['content'] }}
+                    <p class="text-gray-500 -mt-2">{{ $blog['user']['name'] }} | {{ $blog->created_at->toFormattedDateString() }}</p>
+                    <p class="mt-2">{{ strlen($blog['content']) > 50 ? substr($blog['content'], 0, 50) . '...' : $blog['content'] }}
                     </p>
                     <div class="card-actions justify-end">
                         @foreach ($blog['tags'] as $tag)
