@@ -20,7 +20,8 @@ class BlogFactory extends Factory
         return [
             'title' => $this->faker->sentence($nbWords = 5, $variableNbWords = true),
             'content' => $this->faker->paragraph($nbWords = 800, $nbSentences = 10, $variableNbSentences = true),
-            'tags' => ['laravel', 'vue', 'node'],
+            'tags' => $this->faker->randomElements(['laravel', 'vue', 'node','react','php','mysql'], 3),
+            'user_id' => User::inRandomOrder()->first()->id,
         ];
     }
 
