@@ -44,6 +44,18 @@ class BlogController extends Controller
 
         Blog::create($formFields);
 
-        return redirect('/')->with('message', 'Blog created successfully!');
+        return redirect('/')->with('success', 'Blog created successfully');
+    }
+
+    // Delete blog
+    public function destroy($id)
+    {
+        $blog = Blog::findOrFail($id);
+        if ($blog->user_id === auth()->user()->id) {
+            $blog->delete();
+            return redirect(route('blogs.index'))->with('message', 'Blog deleted successfully');
+        } else {
+            return redirect()->back()->with('error', 'You are not authorized to delete this blog');
+        }
     }
 }

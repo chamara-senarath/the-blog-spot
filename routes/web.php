@@ -27,6 +27,8 @@ Route::get('/blogs/{blog}', [BlogController::class, 'show'])->name('blogs.show')
 // Create new blog
 Route::post('/blogs', [BlogController::class, 'store'])->middleware('auth')->name('blogs.store');
 
+// Delete a blog
+Route::delete('/blogs/{id}', [BlogController::class, 'destroy'])->middleware('auth')->name('blogs.destroy');
 
 // Show login form view
 Route::get('/login', [UserController::class, 'login'])->middleware('guest')->name('users.login');
