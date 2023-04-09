@@ -11,6 +11,33 @@
 </head>
 
 <body>
+    <div id="notifications-container" class="fixed top-4 right-4 z-50">
+        @if (session('success'))
+            <div class="alert alert-success shadow-lg">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span> {{ session('success') }}
+                </div>
+            </div>
+        @endif
+        @if (session('error'))
+            <div class="alert alert-error shadow-lg">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span> {{ session('error') }}
+                    </span>
+                </div>
+            </div>
+        @endif
+    </div>
     <div class="flex flex-col min-h-screen">
         <div class="navbar bg-base-100">
             <div class="flex-1">
@@ -56,6 +83,21 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        // Get the notifications container element
+        const notificationsContainer = document.getElementById('notifications-container');
+
+        // Get all alert elements inside the notifications container
+        const alerts = notificationsContainer.querySelectorAll('.alert');
+
+        // Hide alerts after 2500ms
+        alerts.forEach(alert => {
+            setTimeout(() => {
+                alert.remove();
+            }, 2500);
+        });
+    </script>
 </body>
 
 </html>
