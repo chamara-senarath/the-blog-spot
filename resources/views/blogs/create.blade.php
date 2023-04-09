@@ -3,7 +3,7 @@
         <div class="card card-normal w-96 bg-base-100 outline">
             <div class="card-body">
                 <div class="card-title text-justify">Create a blog</div>
-                <form class="grid grid-cols-1 gap-4" action="/blogs" method="POST" enctype="multipart/form-data">
+                <form class="grid grid-cols-1 gap-4" action="{{ route('blogs.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input name="title" type="text" placeholder="Title" class="input input-bordered w-full" />
                     <textarea name="content" class="textarea textarea-bordered w-full" placeholder="Content"></textarea>

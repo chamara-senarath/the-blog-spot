@@ -3,7 +3,7 @@
         <div class="card card-normal w-96 bg-base-100 outline">
             <div class="card-body">
                 <div class="card-title text-justify">Register</div>
-                <form class="grid gap-y-8 grid-cols-1 place-items-center" action="/users" method="POST">
+                <form class="grid gap-y-8 grid-cols-1 place-items-center" action="{{ route('users.store') }}" method="POST">
                     @csrf
                     <div class="grid gap-y-4 grid-cols-1">
                         <input type="text" name="name" placeholder="Name"
@@ -33,7 +33,7 @@
 
                     </div>
                     <button class="btn btn-wide">Sign Up</button>
-                    <p>Already have an account? <a class="text-primary" href="/login">Login</a></p>
+                    <p>Already have an account? <a class="text-primary" href="{{ route('users.login') }}">Login</a></p>
                 </form>
             </div>
         </div>

@@ -16,28 +16,28 @@ use App\Http\Controllers\UserController;
 */
 
 // All blogs view
-Route::get('/', [BlogController::class, 'index']);
+Route::get('/', [BlogController::class, 'index'])->name('blogs.index');
 
 // Create blog view
-Route::get('/blogs/create', [BlogController::class, 'create'])->middleware('auth'); 
+Route::get('/blogs/create', [BlogController::class, 'create'])->middleware('auth')->name('blogs.create');
 
 // Single blog view
-Route::get('/blogs/{blog}', [BlogController::class, 'show']);
+Route::get('/blogs/{blog}', [BlogController::class, 'show'])->name('blogs.show');
 
 // Create new blog
-Route::post('/blogs', [BlogController::class, 'store'])->middleware('auth'); 
+Route::post('/blogs', [BlogController::class, 'store'])->middleware('auth')->name('blogs.store');
 
 
 // Show login form view
-Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
+Route::get('/login', [UserController::class, 'login'])->middleware('guest')->name('users.login');
 
 // Show register form view
-Route::get('/register', [UserController::class, 'create'])->middleware('guest');
+Route::get('/register', [UserController::class, 'create'])->middleware('guest')->name('users.create');
 
 // Create new user
-Route::post('/users', [UserController::class, 'store']);
+Route::post('/users', [UserController::class, 'store'])->name('users.store');
 
 // Create log in user
-Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+Route::post('/users/authenticate', [UserController::class, 'authenticate'])->name('users.authenticate');
 
 

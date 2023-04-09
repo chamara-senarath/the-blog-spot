@@ -17,7 +17,7 @@
                         @enderror
                     </div>
                     <button class="btn btn-wide">Login</button>
-                    <p>Don't have an account? <a class="text-primary" href="/register">Register</a></p>
+                    <p>Don't have an account? <a class="text-primary" href="{{ route('users.create') }}">Register</a></p>
                 </form>
             </div>
         </div>

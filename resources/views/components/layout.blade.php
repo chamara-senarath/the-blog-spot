@@ -18,8 +18,8 @@
                         width="80px"></a>
             </div>
             <div class="flex-none">
-                <a href="/login" class="btn btn-ghost gap-2  mr-2"> Login </a>
-                <a href="/blogs/create" class="btn btn-ghost gap-2  mr-2">
+                <a href="{{ route('users.login') }}" class="btn btn-ghost gap-2  mr-2"> Login </a>
+                <a href="{{ route('blogs.create') }}" class="btn btn-ghost gap-2  mr-2">
                     Write a blog
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-6 h-6">
