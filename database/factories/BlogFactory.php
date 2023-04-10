@@ -17,10 +17,15 @@ class BlogFactory extends Factory
      */
     public function definition(): array
     {
+        $content = '';
+        for ($i=0; $i < rand(6, 12); $i++) {
+            $paragraph = $this->faker->paragraph($nbWords = rand(20, 50), $nbSentences = rand(6, 12), $variableNbSentences = true);
+            $content = $content . "<p>$paragraph</p></br>";
+        }
         return [
             'title' => $this->faker->sentence($nbWords = 5, $variableNbWords = true),
-            'content' => $this->faker->paragraph($nbWords = 800, $nbSentences = 10, $variableNbSentences = true),
-            'tags' => $this->faker->randomElements(['laravel', 'vue', 'node','react','php','mysql'], 3),
+            'content' => $content,
+            'tags' => $this->faker->randomElements(['laravel', 'vue', 'node', 'react', 'php', 'mysql'], 3),
             'user_id' => User::inRandomOrder()->first()->id,
         ];
     }
