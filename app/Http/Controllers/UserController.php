@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    // Show login form 
+    // Show login form
     public function login()
     {
         return view('users.login');
@@ -55,5 +55,11 @@ class UserController extends Controller
         }
 
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
+    }
+
+    // Logout
+    public function logout() {
+        auth()->logout();
+        return redirect(route('blogs.index'));
     }
 }

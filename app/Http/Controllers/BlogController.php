@@ -61,4 +61,11 @@ class BlogController extends Controller
             return redirect()->back()->with('error', 'You are not authorized to delete this blog');
         }
     }
+
+    // Show blogs of the current user
+    public function my_blogs() {
+        $user = auth()->user();
+        $blogs = Blog::where('user_id', $user->id)->paginate(6);
+        return view('blogs.index', ['blogs' => $blogs]);
+    }
 }

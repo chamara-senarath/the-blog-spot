@@ -22,6 +22,9 @@ Route::get('/', [BlogController::class, 'index'])->name('blogs.index');
 // Create blog view
 Route::get('/blogs/create', [BlogController::class, 'create'])->middleware('auth')->name('blogs.create');
 
+// Show my blogs view
+Route::get('/blogs/my-blogs', [BlogController::class, 'my_blogs'])->name('blogs.my-blogs');
+
 // Single blog view
 Route::get('/blogs/{blog}', [BlogController::class, 'show'])->name('blogs.show');
 
@@ -30,6 +33,9 @@ Route::post('/blogs', [BlogController::class, 'store'])->middleware('auth')->nam
 
 // Delete a blog
 Route::delete('/blogs/{id}', [BlogController::class, 'destroy'])->middleware('auth')->name('blogs.destroy');
+
+// Create new comment
+Route::post('/blogs/{blog}/comments', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');
 
 // Show login form view
 Route::get('/login', [UserController::class, 'login'])->middleware('guest')->name('users.login');
@@ -43,5 +49,5 @@ Route::post('/users', [UserController::class, 'store'])->name('users.store');
 // Create log in user
 Route::post('/users/authenticate', [UserController::class, 'authenticate'])->name('users.authenticate');
 
-// Create new comment
-Route::post('/blogs/{blog}/comments', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');
+// Logout
+Route::get('/logout', [UserController::class, 'logout'])->name('users.logout');
