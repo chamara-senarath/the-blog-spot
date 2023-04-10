@@ -13,7 +13,7 @@
                     </label>
                     <ul tabindex="0"
                         class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a>Edit blog</a></li>
+                        <li><a href="{{ route('blogs.edit', ['blog' => $blog]) }}">Edit blog</a></li>
                         <li><a><label for="delete-blog-modal">Delete blog</label></a></li>
                     </ul>
                 </div>
@@ -22,29 +22,36 @@
         <p>{{ $blog->user->name }}</p>
         <p>{{ $blog->created_at->toFormattedDateString() }}</p>
         @if ($blog->image)
-            <img class=" mt-4" src="{{ asset('storage/' . $blog->image) }}" @endif
-            <p class="mt-8">{!! $blog['content'] !!}</p>
-            <div class="mt-12">
-                <h1 class="text-xl">Comments</h1>
-                <x-comment-section :blog="$blog" :comments="$comments"></x-comment-section>
-            </div>
-            <!-- delete blog modal -->
-            <input type="checkbox" id="delete-blog-modal" class="modal-toggle" />
-            <div class="modal modal-bottom sm:modal-middle">
-                <div class="modal-box">
-                    <h3 class="font-bold text-lg">Do you really want to delete this blog?</h3>
-                    <div class="modal-action">
-                        <form action="{{ route('blogs.destroy', $blog->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-outline btn-error">
-                                <label for="delete-blog-modal">Yes</label>
-                            </button>
-                        </form>
-                        <label for="delete-blog-modal" class="btn">No</label>
-                    </div>
+            <img class=" mt-4" src="{{ asset('storage/' . $blog->image) }}">
+        @endif
+        <div class="mt-8">{!! $blog['content'] !!}</div>
+        <div class="flex space-x-2 mt-2">
+            <h1 class="text-sm font-bold">Tags:</h1>
+            @foreach ($blog['tags'] as $tag)
+                <div class="badge badge-outline">{{ $tag }}</div>
+            @endforeach
+        </div>
+        <div class="mt-12">
+            <h1 class="text-xl">Comments</h1>
+            <x-comment-section :blog="$blog" :comments="$comments"></x-comment-section>
+        </div>
+        <!-- delete blog modal -->
+        <input type="checkbox" id="delete-blog-modal" class="modal-toggle" />
+        <div class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box">
+                <h3 class="font-bold text-lg">Do you really want to delete this blog?</h3>
+                <div class="modal-action">
+                    <form action="{{ route('blogs.destroy', $blog->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-outline btn-error">
+                            <label for="delete-blog-modal">Yes</label>
+                        </button>
+                    </form>
+                    <label for="delete-blog-modal" class="btn">No</label>
                 </div>
             </div>
+        </div>
 
     </div>
 

@@ -27,8 +27,15 @@ class BlogController extends Controller
     // Create blog view
     public function create()
     {
-        return view('blogs.create');
+        return view('blogs.create', ['is_edit' => false]);
     }
+
+    // Edit blog view
+    public function edit(Blog $blog)
+    {
+        return view('blogs.create', ['blog' => $blog, 'is_edit' => true]);
+    }
+
 
     // Store blog
     public function store(Request $request)
@@ -50,6 +57,32 @@ class BlogController extends Controller
         return redirect('/')->with('success', 'Blog created successfully');
     }
 
+    // Update blog
+    public function update(Request $request, Blog $blog)
+    {
+        $formFields = $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'tags' => 'required',
+        ]);
+
+        if ($request->hasFile('header-image')) {
+            $formFields['image'] = $request->file('header-image')->store('images', 'public');
+        }
+
+        $blog['title'] = $formFields['title'];
+        $blog['content'] = $formFields['content'];
+        $blog['tags'] = explode(",", $formFields['tags']);
+        if (!empty($formFields['image'])) {
+            $blog['image'] = $formFields['image'];
+        }
+
+        $blog->save();
+
+        return redirect()->route('blogs.show', ['blog' => $blog->id])->with('success', 'Blog updated successfully');
+    }
+
+
     // Delete blog
     public function destroy($id)
     {
@@ -63,7 +96,8 @@ class BlogController extends Controller
     }
 
     // Show blogs of the current user
-    public function my_blogs() {
+    public function my_blogs()
+    {
         $user = auth()->user();
         $blogs = Blog::where('user_id', $user->id)->paginate(6);
         return view('blogs.index', ['blogs' => $blogs]);

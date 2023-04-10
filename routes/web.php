@@ -31,6 +31,12 @@ Route::get('/blogs/{blog}', [BlogController::class, 'show'])->name('blogs.show')
 // Create new blog
 Route::post('/blogs', [BlogController::class, 'store'])->middleware('auth')->name('blogs.store');
 
+// Edit blog
+Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('blogs.edit');
+
+// Update blog
+Route::put('/blogs/{blog}/update', [BlogController::class, 'update'])->name('blogs.update');
+
 // Delete a blog
 Route::delete('/blogs/{id}', [BlogController::class, 'destroy'])->middleware('auth')->name('blogs.destroy');
 
