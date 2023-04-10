@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -42,4 +43,5 @@ Route::post('/users', [UserController::class, 'store'])->name('users.store');
 // Create log in user
 Route::post('/users/authenticate', [UserController::class, 'authenticate'])->name('users.authenticate');
 
-
+// Create new comment
+Route::post('/blogs/{blog}/comments', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');

@@ -1,6 +1,6 @@
 <x-layout>
     <div class="flex flex-col px-12 md:px-24 lg:px-64 py-8">
-        <div class="flex justify-between items-center">
+        <div class="flex justify-between items-center mb-4">
             <h1 class="text-3xl md:text-7xl font-semibold">{{ $blog->title }}</h1>
             @if ($blog->user_id === auth()->user()->id)
                 <div class="dropdown dropdown-end">
@@ -18,14 +18,16 @@
                     </ul>
                 </div>
             @endif
-
         </div>
         <p>{{ $blog->user->name }}</p>
         <p>{{ $blog->created_at->toFormattedDateString() }}</p>
         @if ($blog->image)
             <img class=" mt-4" src="{{ asset('storage/' . $blog->image) }}" @endif
             <p class="mt-8">{{ $blog['content'] }}</p>
-
+            <div class="mt-12">
+                <h1 class="text-xl">Comments</h1>
+                <x-comment-section :blog="$blog" :comments="$comments"></x-comment-section>
+            </div>
             <!-- delete blog modal -->
             <input type="checkbox" id="delete-blog-modal" class="modal-toggle" />
             <div class="modal modal-bottom sm:modal-middle">
@@ -43,22 +45,7 @@
                     </div>
                 </div>
             </div>
-            <div id="comment-section" class="flex flex-col space-y-4 mt-12">
-                <h1 class="text-xl">Comments</h1>
-                <x-comment-box username="chamara" comment="" date=""></x-comment-box>
-                <x-comment-box username="chamara" comment="" date=""></x-comment-box>
-                <div class="card p-4 outline outline-gray-100">
-                    <div class="flex items-center space-x-4">
-                        <img src="https://via.placeholder.com/50" alt="Profile picture" class="w-10 h-10 rounded-full">
-                        <input type="text" placeholder="Write a comment"
-                            class="w-full bg-gray-100 rounded-md p-2 focus:outline-none">
-                    </div>
-                    <div class="flex items-center justify-end mt-2">
-                        <button class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md">Submit</button>
-                    </div>
-                </div>
 
-            </div>
     </div>
 
 </x-layout>

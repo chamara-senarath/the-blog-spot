@@ -16,8 +16,10 @@ class BlogController extends Controller
     // Show single blog view
     public function show(Blog $blog)
     {
+        $comments = $blog->comments()->get();
         return view('blogs.show', [
-            'blog' => $blog
+            'blog' => $blog,
+            'comments' => $comments
         ]);
     }
 
