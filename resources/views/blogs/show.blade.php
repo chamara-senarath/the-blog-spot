@@ -43,6 +43,22 @@
                     </div>
                 </div>
             </div>
+            <div id="comment-section" class="flex flex-col space-y-4 mt-12">
+                <h1 class="text-xl">Comments</h1>
+                <x-comment-box username="chamara" comment="" date=""></x-comment-box>
+                <x-comment-box username="chamara" comment="" date=""></x-comment-box>
+                <div class="card p-4 outline outline-gray-100">
+                    <div class="flex items-center space-x-4">
+                        <img src="https://via.placeholder.com/50" alt="Profile picture" class="w-10 h-10 rounded-full">
+                        <input type="text" placeholder="Write a comment"
+                            class="w-full bg-gray-100 rounded-md p-2 focus:outline-none">
+                    </div>
+                    <div class="flex items-center justify-end mt-2">
+                        <button class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md">Submit</button>
+                    </div>
+                </div>
+
+            </div>
     </div>
 
 </x-layout>
