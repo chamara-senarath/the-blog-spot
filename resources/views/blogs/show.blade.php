@@ -23,7 +23,7 @@
         <p>{{ $blog->created_at->toFormattedDateString() }}</p>
         @if ($blog->image)
             <img class=" mt-4" src="{{ asset('storage/' . $blog->image) }}" @endif
-            <p class="mt-8">{{ $blog['content'] }}</p>
+            <p class="mt-8">{!! $blog['content'] !!}</p>
             <div class="mt-12">
                 <h1 class="text-xl">Comments</h1>
                 <x-comment-section :blog="$blog" :comments="$comments"></x-comment-section>
