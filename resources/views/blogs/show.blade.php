@@ -2,7 +2,7 @@
     <div class="flex flex-col px-12 md:px-24 lg:px-64 py-8">
         <div class="flex justify-between items-center mb-4">
             <h1 class="text-3xl md:text-7xl font-semibold">{{ $blog->title }}</h1>
-            @if ($blog->user_id === auth()->user()->id)
+            @if (isset(auth()->user()->id) && $blog->user_id === auth()->user()->id)
                 <div class="dropdown dropdown-end">
                     <label tabindex="0" class="btn btn-ghost">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
