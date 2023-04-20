@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\StatController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -42,6 +43,9 @@ Route::delete('/blogs/{id}', [BlogController::class, 'destroy'])->middleware('au
 
 // Create new comment
 Route::post('/blogs/{blog}/comments', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');
+
+// Show blogs stats
+Route::get('/blogs/{blog}/stats', [StatController::class, 'index'])->middleware('auth')->name('blogs.stats');
 
 // Show login form view
 Route::get('/login', [UserController::class, 'login'])->middleware('guest')->name('users.login');

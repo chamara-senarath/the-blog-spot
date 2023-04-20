@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Stat;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -18,6 +19,12 @@ class BlogController extends Controller
     public function show(Blog $blog)
     {
         $comments = $blog->comments()->get();
+
+        $view = new Stat;
+        $view->blog_id = $blog->id;
+        $view->user_id = auth()->id() ? auth()->id() : 0;
+        $view->save();
+
         return view('blogs.show', [
             'blog' => $blog,
             'comments' => $comments

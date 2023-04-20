@@ -14,6 +14,7 @@
                     <ul tabindex="0"
                         class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><a href="{{ route('blogs.edit', ['blog' => $blog]) }}">Edit blog</a></li>
+                        <li><a href="{{ route('blogs.stats', ['blog' => $blog]) }}">Blog stats</a></li>
                         <li><a><label for="delete-blog-modal">Delete blog</label></a></li>
                     </ul>
                 </div>
