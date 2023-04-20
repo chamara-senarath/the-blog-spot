@@ -2,7 +2,8 @@
     @foreach ($comments as $comment)
         <div class="flex items-start space-x-4 rounded-lg outline outline-gray-100 p-4">
             <div class="flex-shrink-0">
-                <img class="h-10 w-10 rounded-full" src="{{ asset('images/no-profile-photo.png  ') }}"
+                <img class="h-10 w-10 rounded-full"
+                    src="{{ $comment->user->image ? asset('storage/' . $comment->user->image) : asset('images/no-profile-photo.png') }}"
                     alt="profile picture" />
 
             </div>
@@ -23,8 +24,8 @@
         @csrf
         <div class="card p-4 outline outline-gray-100">
             <div class="flex items-center space-x-4">
-                <img src="{{ asset('images/no-profile-photo.png  ') }}" alt="Profile picture"
-                    class="w-10 h-10 rounded-full">
+                <img src="{{ auth()->user()->image ? asset('storage/' . auth()->user()->image) : asset('images/no-profile-photo.png') }}"
+                    alt="Profile picture" class="w-10 h-10 rounded-full">
                 <input name="content" type="text" placeholder="Write a comment"
                     class="w-full bg-gray-100 rounded-md p-2 focus:outline-none">
             </div>
