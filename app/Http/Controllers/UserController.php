@@ -41,6 +41,33 @@ class UserController extends Controller
         return redirect('/')->with('message', 'User created and logged in');
     }
 
+    // Show user profile
+    public function show()
+    {
+        return view('users.show', ['user' => auth()->user()]);
+    }
+
+    // Update user
+    public function update(Request $request, User $user)
+    {
+        $formFields = $request->validate([
+            'name' => 'required',
+        ]);
+
+        if ($request->hasFile('profile-image')) {
+            $formFields['image'] = $request->file('profile-image')->store('images', 'public');
+        }
+
+        $user['name'] = $formFields['name'];
+        if (!empty($formFields['image'])) {
+            $user['image'] = $formFields['image'];
+        }
+
+        $user->save();
+
+        return redirect()->route('users.show', ['user' => $user])->with('success', 'User profile updated successfully');
+    }
+
     // Authenticate user
     public function authenticate(Request $request)
     {
@@ -58,7 +85,8 @@ class UserController extends Controller
     }
 
     // Logout
-    public function logout() {
+    public function logout()
+    {
         auth()->logout();
         return redirect(route('blogs.index'));
     }

@@ -60,11 +60,12 @@
                     <div class="dropdown dropdown-end">
                         <label tabindex="0" class="btn btn-ghost btn-circle avatar">
                             <div class="w-10 rounded-full">
-                                <img src="{{ asset('images/no-profile-photo.png  ') }}" />
+                                <img src="{{ auth()->user()->image ? asset('storage/' . auth()->user()->image) : asset('images/no-profile-photo.png') }}" />
                             </div>
                         </label>
                         <ul tabindex="0"
                             class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                            <li><a href="{{ route('users.show') }}">Profile</a></li>
                             <li><a href="{{ route('blogs.my-blogs') }}">My blogs</a></li>
                             <li><a href="{{ route('users.logout') }}">Logout</a></li>
                         </ul>

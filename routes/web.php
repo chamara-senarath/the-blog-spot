@@ -35,7 +35,7 @@ Route::post('/blogs', [BlogController::class, 'store'])->middleware('auth')->nam
 Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('blogs.edit');
 
 // Update blog
-Route::put('/blogs/{blog}/update', [BlogController::class, 'update'])->name('blogs.update');
+Route::put('/blogs/{blog}/update', [BlogController::class, 'update'])->middleware('auth')->name('blogs.update');
 
 // Delete a blog
 Route::delete('/blogs/{id}', [BlogController::class, 'destroy'])->middleware('auth')->name('blogs.destroy');
@@ -54,6 +54,12 @@ Route::post('/users', [UserController::class, 'store'])->name('users.store');
 
 // Create log in user
 Route::post('/users/authenticate', [UserController::class, 'authenticate'])->name('users.authenticate');
+
+// Show user profile
+Route::get('/users/show', [UserController::class, 'show'])->middleware('auth')->name('users.show');
+
+// Update user
+Route::put('/users/{user}/update', [UserController::class, 'update'])->middleware('auth')->name('users.update');
 
 // Logout
 Route::get('/logout', [UserController::class, 'logout'])->name('users.logout');
