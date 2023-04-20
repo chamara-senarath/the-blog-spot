@@ -18,6 +18,7 @@
                     </div>
                     <button class="btn btn-wide">Login</button>
                     <p>Don't have an account? <a class="text-primary" href="{{ route('users.create') }}">Register</a></p>
+                    <a class="text-primary" href="{{ route('password.request') }}">Forgot password </a>
                 </form>
             </div>
         </div>

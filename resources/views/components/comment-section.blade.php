@@ -24,7 +24,7 @@
         @csrf
         <div class="card p-4 outline outline-gray-100">
             <div class="flex items-center space-x-4">
-                <img src="{{ auth()->user()->image ? asset('storage/' . auth()->user()->image) : asset('images/no-profile-photo.png') }}"
+                <img src="{{ isset(auth()->user()->image) && auth()->user()->image ? asset('storage/' . auth()->user()->image) : asset('images/no-profile-photo.png') }}"
                     alt="Profile picture" class="w-10 h-10 rounded-full">
                 <input name="content" type="text" placeholder="Write a comment"
                     class="w-full bg-gray-100 rounded-md p-2 focus:outline-none">

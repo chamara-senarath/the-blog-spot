@@ -23,7 +23,7 @@ Route::get('/', [BlogController::class, 'index'])->name('blogs.index');
 Route::get('/blogs/create', [BlogController::class, 'create'])->middleware('auth')->name('blogs.create');
 
 // Show my blogs view
-Route::get('/blogs/my-blogs', [BlogController::class, 'my_blogs'])->name('blogs.my-blogs');
+Route::get('/blogs/my-blogs', [BlogController::class, 'myBlogs'])->name('blogs.my-blogs');
 
 // Single blog view
 Route::get('/blogs/{blog}', [BlogController::class, 'show'])->name('blogs.show');
@@ -63,3 +63,15 @@ Route::put('/users/{user}/update', [UserController::class, 'update'])->middlewar
 
 // Logout
 Route::get('/logout', [UserController::class, 'logout'])->name('users.logout');
+
+// Show forgot password form
+Route::get('/forgot-password', [UserController::class, 'forgotPasswordRequest'])->middleware('guest')->name('password.request');
+
+// Forgot password request
+Route::post('/forgot-password', [UserController::class, 'forgotPasswordEmail'])->middleware('guest')->name('password.email');
+
+// Forgot password reset form
+Route::get('/reset-password/{token}', [UserController::class, 'forgotPasswordReset'])->middleware('guest')->name('password.reset');
+
+// Forgot password update
+Route::post('/reset-password', [UserController::class, 'forgotPasswordUpdate'])->middleware('guest')->name('password.update');

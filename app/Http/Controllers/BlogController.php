@@ -89,14 +89,14 @@ class BlogController extends Controller
         $blog = Blog::findOrFail($id);
         if ($blog->user_id === auth()->user()->id) {
             $blog->delete();
-            return redirect(route('blogs.index'))->with('message', 'Blog deleted successfully');
+            return redirect(route('blogs.index'))->with('success', 'Blog deleted successfully');
         } else {
             return redirect()->back()->with('error', 'You are not authorized to delete this blog');
         }
     }
 
     // Show blogs of the current user
-    public function my_blogs()
+    public function myBlogs()
     {
         $user = auth()->user();
         $blogs = Blog::where('user_id', $user->id)->paginate(6);
