@@ -2,7 +2,7 @@
 
 The Blogs Spot is a powerful and versatile blog platform developed using Laravel. It provides a comprehensive set of features that allow users to create, publish, edit, and manage their blogs easily. With user authentication, basic stats tracking, and commenting capabilities, The Blogs Spot offers a complete solution for hosting a blogging platform or integrating it into existing projects.
 
-![vlcsnap-2023-06-07-08h37m28s604](https://github.com/chamara-senarath/the-blog-spot/assets/74641128/6fe080b2-3cdc-41bc-a4ba-8820607b300f)
+![vlcsnap-2023-06-07-08h37m28s604](https://github.com/chamara-senarath/the-blog-spot/assets/74641128/b1710c61-081c-4ce2-b3db-b04ac3b8137d)
 
 
 ## Features
